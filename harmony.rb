@@ -1,5 +1,6 @@
-module Chord
-  #defines key structure for scale degree hashes
+#This module provides a library for representing valid harmonic structures spelled enharmonically correctly.
+module Harmony
+  #defines hash keys 
   tones = [   :root, 
               :flatninth, 
               :ninth, 
@@ -94,6 +95,8 @@ module Chord
                   "G#" => gsharptones
                   }
 
+
+#i should probably decouple this as a function and instead have a different file to model chords/scales/tunes etc as objects. 
   def chord(root = "C", qual = "M", inv = 0)
     qual = "M" if qual == ""
 
@@ -108,6 +111,7 @@ module Chord
     return [lib[:root], lib[:third], lib[:fifth], lib[:thirteenth]] if qual == "6"
     return [lib[:root], lib[:third], lib[:fifth], lib[:seventh]] if qual == "M7"
     return [lib[:root], lib[:flatthird], lib[:fifth], lib[:flatseventh]] if qual == "m7"
+    return [lib[:root], lib[:flatthird], lib[:fifth], lib[:thirteenth]] if qual == "m6"
     return [lib[:root], lib[:third], lib[:fifth], lib[:flatseventh]] if qual == "7"
     return [lib[:root], lib[:flatthird], lib[:flatfifth], lib[:flatseventh]] if qual == "m7b5"
     return [lib[:root], lib[:flatthird], lib[:flatfifth], lib[:doubleflatseventh]] if qual == "dim7"
@@ -135,10 +139,6 @@ module Chord
       when "Harmonic Major"
         [lib[:root],lib[:ninth],lib[:third],lib[:fourth],lib[:fifth],lib[:flatthirteenth],lib[:seventh]]
     end
-  end
-
-  def test
-    puts "yatta!"
   end
 end
 

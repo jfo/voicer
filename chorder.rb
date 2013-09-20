@@ -1,14 +1,14 @@
-load "voicer.rb"
-include Chord
+load "harmony.rb"
+include Harmony
 #file = File.open(ARGV[0], "r").read.split(/\n/)
 
 
 class Tune
-  attr_accessor :chords, :structure, :durations, :everything, :roots
+  attr_accessor :chart, :irb
 
   def initialize(file = "allthethingsyouare.jazz")
-    file = File.open(file, "r").read.split(/\n/)
-    @chords = file.delete_if {|line| line[0] == "*" || line[0] == "!" || line.length < 3}
+    @irb = File.open(file, "r").read.split(/\n/)
+    @chords = @irb.delete_if {|line| line[0] == "*" || line[0] == "!" || line.length < 3}
   
     @chords.map! {|chord| chord.gsub(/:/,"")}
     @chords.map! {|chord| chord.gsub(/\./,"")}
@@ -45,15 +45,20 @@ class Tune
       end
     end
     
-    @everything = @roots.zip @chords
-   
+    @chart = @roots.zip @chords
+    @chart.each do |chord|
+      chord.push(@durations.shift)
+    end
   end
 end
 
-system("clear")
- x = Tune.new
- x.structure
 
- x.everything.each do |root, qual|
-     p scale(root, "Melodic Minor")
- end
+x = Tune.new
+
+x.chart.each do |root, qual|
+ puts root
+ p scale(root,"Harmonic Major")
+ gets
+end
+
+  
