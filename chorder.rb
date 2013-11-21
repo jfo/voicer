@@ -1,7 +1,7 @@
 load "harmony.rb"
+
 include Harmony
 #file = File.open(ARGV[0], "r").read.split(/\n/)
-
 
 class Tune
   attr_accessor :chart, :irb
@@ -56,8 +56,8 @@ end
 x = Tune.new
 
 x.chart.each do |root, qual|
- puts root
- p scale(root,"Harmonic Major")
+ puts root + qual
+ p chord(root, qual)
  gets
 end
 

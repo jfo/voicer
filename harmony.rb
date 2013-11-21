@@ -97,7 +97,7 @@ module Harmony
 
 
 #i should probably decouple this as a function and instead have a different file to model chords/scales/tunes etc as objects. 
-  def chord(root = "C", qual = "M", inv = 0)
+  def chord(root = "C", qual = "M")
     qual = "M" if qual == ""
 
     lib = @@lookup[root.capitalize]
