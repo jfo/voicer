@@ -1,5 +1,7 @@
-load "harmony.rb"
+#this file will strip the harmonic information from a jazz file and return some sort of data structure to represent it. 
 
+
+require_relative "harmony"
 include Harmony
 #file = File.open(ARGV[0], "r").read.split(/\n/)
 
@@ -51,14 +53,3 @@ class Tune
     end
   end
 end
-
-
-x = Tune.new
-
-x.chart.each do |root, qual|
- puts root + qual
- p chord(root, qual)
- gets
-end
-
-  

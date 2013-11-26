@@ -1,5 +1,6 @@
 #This module provides a library for representing valid harmonic structures spelled enharmonically correctly.
 module Harmony
+
   #defines hash keys 
   tones = [   :root, 
               :flatninth, 
@@ -98,8 +99,6 @@ module Harmony
 
 #i should probably decouple this as a function and instead have a different file to model chords/scales/tunes etc as objects. 
   def chord(root = "C", qual = "M")
-    qual = "M" if qual == ""
-
     lib = @@lookup[root.capitalize]
 
     return [lib[:root], lib[:third], lib[:fifth]] if qual == "M"
@@ -144,3 +143,5 @@ end
 
 
 
+include Harmony
+p chord
