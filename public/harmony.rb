@@ -144,4 +144,3 @@ end
 
 
 include Harmony
-p chord
