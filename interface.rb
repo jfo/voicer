@@ -5,6 +5,18 @@ include Harmony
 get("/") do
 
   @chord = chord(params["root"], params["quality"]) if params != {}
+  @chord.map! {|n| n.downcase + "/4"}
+
+  @accs = []
+  @chord.each_with_index do |note, i|
+    if note.include? "#"
+      @accs << ".addAccidental(#{i}, new Vex.Flow.Accidental(\"#\"))"
+    end
+    if note.include? "b"
+      @accs << ".addAccidental(#{i}, new Vex.Flow.Accidental(\"b\"))"
+    end
+  end
+
   @params = params
   erb :index
 
