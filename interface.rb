@@ -9,10 +9,10 @@ get("/") do
 
   @accs = []
   @chord.each_with_index do |note, i|
-    if note.include? "#"
+    if note[1..-1].include? "#"
       @accs << ".addAccidental(#{i}, new Vex.Flow.Accidental(\"#\"))"
     end
-    if note.include? "b"
+    if note[1..-1].include? "b"
       @accs << ".addAccidental(#{i}, new Vex.Flow.Accidental(\"b\"))"
     end
   end
