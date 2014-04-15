@@ -1,11 +1,12 @@
 #This module provides a library for representing valid harmonic structures spelled enharmonically correctly.
+
 module Harmony
 
-  #defines hash keys 
-  tones = [   :root, 
-              :flatninth, 
-              :ninth, 
-              :sharpninth, 
+  #defines hash keys
+  tones = [   :root,
+              :flatninth,
+              :ninth,
+              :sharpninth,
               :flatthird,
               :third,
               :fourth,
@@ -21,7 +22,7 @@ module Harmony
               ]
 
   #explicitly defines notes at intervals for given root notes
-  aflat = ["Ab","Bbb","Bb","B", "Cb","C","Db","D","Ebb","Eb","E","Fb","F","Gbb","Gb","G"] 
+  aflat = ["Ab","Bbb","Bb","B", "Cb","C","Db","D","Ebb","Eb","E","Fb","F","Gbb","Gb","G"]
   a = ["A","Bb","B","B#","C","C#","D","D#","Eb","E","E#","F","F#","Gb","G","G#"]
   asharp = ["A#","B","B#","B##","C#","C##","D#","D##","E","E#","E##","F#","F##","G","G#","G##"]
 
@@ -77,27 +78,27 @@ module Harmony
 
 
   #collects note hashes in a master hash ; keys are a given root
-  @@lookup = {    "Ab" => aflattones, 
-                  "A" => atones, 
-                  "A#" => asharptones, 
-                  "Bb" => bflattones, 
+  @@lookup = {    "Ab" => aflattones,
+                  "A" => atones,
+                  "A#" => asharptones,
+                  "Bb" => bflattones,
                   "B" => btones,
-                  "C" => ctones, 
+                  "C" => ctones,
                   "C#" => csharptones,
-                  "Db" => dflattones, 
+                  "Db" => dflattones,
                   "D" => dtones,
                   "D#" => dsharptones,
-                  "Eb" => eflattones, 
-                  "E" => etones, 
-                  "F" => ftones, 
-                  "F#" => fsharptones, 
+                  "Eb" => eflattones,
+                  "E" => etones,
+                  "F" => ftones,
+                  "F#" => fsharptones,
                   "Gb" => gflattones,
                   "G" => gtones,
                   "G#" => gsharptones
                   }
 
 
-#i should probably decouple this as a function and instead have a different file to model chords/scales/tunes etc as objects. 
+#i should probably decouple this as a function and instead have a different file to model chords/scales/tunes etc as objects.
   def chord(root = "C", qual = "M")
     lib = @@lookup[root.capitalize]
 
@@ -106,7 +107,7 @@ module Harmony
     return [lib[:root], lib[:flatthird], lib[:flatfifth]] if qual == "dim"
     return [lib[:root], lib[:third], lib[:sharpfifth]] if qual == "+"
 
-                          
+
     return [lib[:root], lib[:third], lib[:fifth], lib[:thirteenth]] if qual == "6"
     return [lib[:root], lib[:third], lib[:fifth], lib[:seventh]] if qual == "M7"
     return [lib[:root], lib[:flatthird], lib[:fifth], lib[:flatseventh]] if qual == "m7"
@@ -140,7 +141,3 @@ module Harmony
     end
   end
 end
-
-
-
-include Harmony

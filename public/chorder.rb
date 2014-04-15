@@ -1,4 +1,4 @@
-#this file will strip the harmonic information from a jazz file and return some sort of data structure to represent it. 
+#this file will strip the harmonic information from a jazz file and return some sort of data structure to represent it.
 
 
 require_relative "harmony"
@@ -11,7 +11,7 @@ class Tune
   def initialize(file = "allthethingsyouare.jazz")
     @irb = File.open(file, "r").read.split(/\n/)
     @chords = @irb.delete_if {|line| line[0] == "*" || line[0] == "!" || line.length < 3}
-  
+
     @chords.map! {|chord| chord.gsub(/:/,"")}
     @chords.map! {|chord| chord.gsub(/\./,"")}
     @chords.map! {|chord| chord.gsub(/b9/,"")}
@@ -30,7 +30,7 @@ class Tune
     @chords.map! {|chord| chord.gsub(/alt/,"#5")}
     @chords.map! {|chord| chord.gsub(/11/,"7")}
 
-    @structure = [] 
+    @structure = []
     @durations = []
     @roots = []
     @quals = []
@@ -41,12 +41,12 @@ class Tune
 
     @chords.each do |chord|
       if chord[1] == "#" || chord[1] == "b"
-        @roots << chord.slice!(0..1)  
+        @roots << chord.slice!(0..1)
       else
         @roots << chord.slice!(0)
       end
     end
-    
+
     @chart = @roots.zip @chords
     @chart.each do |chord|
       chord.push(@durations.shift)

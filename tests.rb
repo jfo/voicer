@@ -1,7 +1,7 @@
 require_relative "public/harmony"
 contents = []
 
-Dir.foreach("public/irb/") do |filename| 
+Dir.foreach("public/irb/") do |filename|
   contents << filename
 end
 
@@ -25,4 +25,4 @@ p titles
 
 
 
-  
+
