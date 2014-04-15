@@ -4,7 +4,8 @@ include Harmony
 
 get("/") do
 
-  @chord = chord(params["root"], params["quality"])
+  @params["root"] = "C"
+  @chord = chord(params["root"], params["quality"]) if params != {}
   @params = params
   erb :index
 

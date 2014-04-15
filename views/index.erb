@@ -1,9 +1,36 @@
 
 <form>
-    <input  name="root" />
-    <input  name="quality" />
-    <input type="submit" value="Submit">
+  Root:<br>
+  <input type="radio" name="root" value="C">C
+  <input type="radio" name="root" value="D">D
+  <input type="radio" name="root" value="E">E
+  <input type="radio" name="root" value="F">F
+  <input type="radio" name="root" value="G">G
+  <input type="radio" name="root" value="A">A
+  <input type="radio" name="root" value="B">B
+  <br>
+
+  Quality: <br>
+  <input type="radio" name="quality" value="M">Major
+  <input type="radio" name="quality" value="m">Minor
+  <input type="radio" name="quality" value="dim">Diminished
+  <input type="radio" name="quality" value="+">Augmented
+  <br>
+  <input type="radio" name="quality" value="6">6
+  <input type="radio" name="quality" value="M7">Maj7
+  <input type="radio" name="quality" value="m7">m7
+  <input type="radio" name="quality" value="7">7
+  <input type="radio" name="quality" value="m6">m6
+  <input type="radio" name="quality" value="7">7
+  <input type="radio" name="quality" value="m7b5">m7b5
+  <input type="radio" name="quality" value="dim7">dim7
+  <input type="radio" name="quality" value="mM7">mM7
+  <input type="radio" name="quality" value="M7#5">M7#5
+  <input type="radio" name="quality" value="7#5">7#5
+  <br>
+  <input type="submit" value="Submit"><br>
 </form>
 
+
+
 <%= @chord %>
-<%= @params %>
